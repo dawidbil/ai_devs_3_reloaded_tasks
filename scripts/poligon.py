@@ -4,10 +4,11 @@ from typing import Any
 
 from dotenv import load_dotenv
 
-_ = load_dotenv()
+load_dotenv()
 
 TASK_NAME = "POLIGON"
 AIDEVS_API_KEY = os.getenv("AIDEVS_API_KEY")
+
 
 def get_input() -> str:
     response = requests.get("https://poligon.aidevs.pl/dane.txt")
