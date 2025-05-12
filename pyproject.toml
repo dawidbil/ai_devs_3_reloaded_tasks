@@ -5,6 +5,7 @@ description = "API solutions for AI Devs 3 Reloaded course"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "beautifulsoup4>=4.13.4",
     "langchain>=0.3.25",
     "langchain-openai>=0.3.16",
     "litellm>=1.69.0",
