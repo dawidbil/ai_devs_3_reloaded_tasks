@@ -1,9 +1,9 @@
 import re
+from typing import cast
+
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from typing import cast
-
 from litellm import completion
 
 load_dotenv()
