@@ -2,7 +2,7 @@
 
 .PHONY: default
 
-default: check format
+default: check format lint
 
 check:
 	uv run ruff check --fix scripts/
@@ -12,4 +12,3 @@ format:
 
 lint:
 	basedpyright scripts/
-
