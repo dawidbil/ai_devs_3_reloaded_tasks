@@ -9,6 +9,7 @@ load_dotenv()
 
 TASK_NAME = "POLIGON"
 AIDEVS_API_KEY = os.environ["AIDEVS_API_KEY"]
+POLIGON_VERIFY_URL = "https://poligon.aidevs.pl/verify"
 
 
 def get_input() -> str:
@@ -25,7 +26,7 @@ def main():
     solution_list = [s for s in input_data.split("\n") if s]
     print(f"Solution prepared: {solution_list}")
 
-    centrala_client = Centrala(task_name=TASK_NAME, apikey=AIDEVS_API_KEY)
+    centrala_client = Centrala(task_name=TASK_NAME, apikey=AIDEVS_API_KEY, url=POLIGON_VERIFY_URL)
     output = centrala_client.send_solution(solution_list)
     print(f"Output from AiDevs: {output}")
 
