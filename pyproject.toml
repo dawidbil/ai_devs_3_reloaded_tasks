@@ -11,6 +11,7 @@ requires-python = ">=3.13"
 dependencies = [
     "beautifulsoup4>=4.13.4",
     "langchain>=0.3.25",
+    "langchain-anthropic>=0.3.13",
     "langchain-openai>=0.3.16",
     "litellm>=1.69.0",
     "python-dotenv>=1.1.0",
