@@ -5,10 +5,10 @@
 default: check format lint
 
 check:
-	uv run ruff check --fix scripts/
+	uv run ruff check --fix scripts/ src/
 
 format:
-	uv run ruff format scripts/
+	uv run ruff format scripts/ src/
 
 lint:
-	basedpyright scripts/
+	basedpyright scripts/ src/
