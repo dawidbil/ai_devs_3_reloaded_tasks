@@ -4,7 +4,12 @@ from typing import cast
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from litellm import completion
+from langchain.schema import HumanMessage, SystemMessage
+
+from utils.llm import (
+    LLMProvider,
+    get_llm_completion,
+)
 
 load_dotenv()
 
@@ -18,20 +23,14 @@ def get_captcha_question(content: str) -> str:
 
 
 def get_captcha_answer(question: str) -> str:
-    response = completion(
-        model="gpt-4o-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a captcha solver. You are given a question and you need to answer it. Return only the answer, nothing else.",
-            },
-            {
-                "role": "user",
-                "content": question,
-            },
-        ],
-    )
-    return cast(str, response.choices[0].message.content)
+    messages = [
+        SystemMessage(
+            content="You are a captcha solver. You are given a question and you need to answer it. Return only the answer, nothing else."
+        ),
+        HumanMessage(content=question),
+    ]
+    answer = get_llm_completion(messages=messages, model=LLMProvider.OPENAI_GPT_4O_MINI)
+    return answer
 
 
 def login(url: str, captcha_answer: str) -> requests.Response:
