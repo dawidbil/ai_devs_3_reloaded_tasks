@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ai-devs-3-reloaded-tasks"
 version = "0.1.0"
@@ -33,7 +37,6 @@ select = [
     "Q", # https://docs.astral.sh/ruff/rules/#flake8-quotes-q
     "COM", # https://docs.astral.sh/ruff/rules/#flake8-commas-com
     "SIM", # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
-
 ]
 ignore = [
     "E501", # https://docs.astral.sh/ruff/rules/line-too-long/
@@ -51,3 +54,6 @@ ignore = [
     "COM819", # https://docs.astral.sh/ruff/rules/prohibited-trailing-comma/
     "ISC002", # https://docs.astral.sh/ruff/rules/multi-line-implicit-string-concatenation/
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]
