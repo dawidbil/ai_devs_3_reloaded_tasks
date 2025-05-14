@@ -1,5 +1,5 @@
 import json
-from typing import TypedDict
+from typing import TypedDict, cast
 
 import requests
 from langchain.schema import HumanMessage, SystemMessage
@@ -43,12 +43,10 @@ def parse_message(message: str) -> RobotMessage:
         KeyError: If required fields are missing.
     """
     try:
-        data = json.loads(message)
+        data = cast(dict[str, str | int], json.loads(message))
     except json.JSONDecodeError as e:
         raise ValueError(f"Invalid JSON message: {e}") from e
 
-    if not isinstance(data, dict):
-        raise ValueError("Message must be a JSON object")
     if "msgID" not in data or "text" not in data:
         raise KeyError("Message must contain 'msgID' and 'text' fields")
     if not isinstance(data["text"], str):
