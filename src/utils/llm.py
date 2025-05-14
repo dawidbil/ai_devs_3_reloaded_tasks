@@ -26,9 +26,6 @@ def get_llm_completion(
 
     Returns:
         The LLM's response as a string.
-
-    Raises:
-        ValueError: If an unsupported model is selected (potentially by langchain_init_chat_model).
     """
     llm: BaseChatModel = init_chat_model(model=model.value)
     chain = llm | StrOutputParser()
